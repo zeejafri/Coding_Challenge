@@ -23,9 +23,10 @@ The dockerfile packages this shell script and pushes an image to the public dock
 `docker push image:latest`
 
 # Docker Image image-zeehasham27-coding_challenge.tar.gz
-A docker image is also uploaded to this repo which is being used to test the application. This image was build using the same dockerfile provided in the repo. This is 
-added just to save users time in build a new image. To load the image use the command below after cloning the repo:
+A docker image is also available to be pulled, you can download the image using the drive link below:
+https://drive.google.com/file/d/1eovCOXJjPS2pnh6UDSjlTDEHyOOtq2ZX/view?usp=share_link
 
+To load the downloaded image use command below:
 `docker load -i image-zeehasham27-coding_challenge.tar.gz`
 
 Once loaded check available images using command:
