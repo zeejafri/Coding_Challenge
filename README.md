@@ -22,7 +22,10 @@ The dockerfile packages this shell script and pushes an image to the public dock
 `docker push image:latest`
 
 # Kubernetes Deployment File:
-A Kubernetes Deployment file is packaged along with this repository. It can also be created on the runtime using the -k8 argument along with URL arguments to the script. Once the deployment is spin up user would be able to see the pod logs with output "HELLO WORLD, swisscom2023-smingate77"
+A Kubernetes Deployment file is packaged along with this repository. It can also be created on the runtime using the -k8 argument along with URL arguments to the script. Once the K8 Deployment file is printed to the std out, user would have to update the command section by adding the enviornment variables. 
+The command section should look like:
+`command: ["/bin/sh", "-c", "./assesment-script.sh $AUTH_URL $PARAMS_URL && sleep 3000000"]`
 
+Once the deployment is spin up user would be able to see the pod logs with output "HELLO WORLD, swisscom2023-smingate77".
 Screenshots:
 ![image](https://user-images.githubusercontent.com/48657324/218091952-bb0dcc72-3b1d-47a1-858c-5515a8ceebad.png)
