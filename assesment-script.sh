@@ -1,7 +1,7 @@
 #!/bin/bash
 
-#TOKEN_URL="https://151dd0e4-bd8b-453b-a01c-924e75053a8b.mock.pstmn.io/auth"
-#PARAM_URL="https://151dd0e4-bd8b-453b-a01c-924e75053a8b.mock.pstmn.io/parameters"
+###TOKEN_URL="https://151dd0e4-bd8b-453b-a01c-924e75053a8b.mock.pstmn.io/auth"
+###PARAM_URL="https://151dd0e4-bd8b-453b-a01c-924e75053a8b.mock.pstmn.io/parameters"
 TOKEN_URL=$1
 PARAM_URL=$2
 
@@ -30,7 +30,7 @@ function get_token {
 }
 
 
-#Pass the URL followed by Parameter as arguments to function
+###Pass the Parameter followed by URL
 function get_params() {
   auth_token=$(get_token "$TOKEN_URL")
   url="${2}?TOKEN=${auth_token}"
@@ -38,15 +38,14 @@ function get_params() {
   echo $param 
 }
 
-PARAMETER1=$(get_params "PARAMETER1" "$PARAM_URL")
+### Fetching Parameter values from remote URL
+PARAMETER1=$(get_params "PARAMETER1" "$PARAM_URL") 
 PARAMETER2=$(get_params "PARAMETER2" "$PARAM_URL")
 
 echo "HELLO WORLD, $PARAMETER1-$PARAMETER2"
 
-
+### Generate the Kubernetes deployment YAML if user passes 3 arguments and 3rd argument is -k8
 if [ $# == 3 ] && [ "$3" == "-k8" ]; then
-
-# Generate the Kubernetes deployment YAML
 cat << EOF > deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
