@@ -21,6 +21,7 @@ spec:
             - name: PARAMS_URL
               value: "https://151dd0e4-bd8b-453b-a01c-924e75053a8b.mock.pstmn.io/parameters"
           command: ["/bin/sh", "-c", "./assesment-script.sh $AUTH_URL $PARAMS_URL && sleep 3000000"]
+          ##Generate this image locally or download the image from drive link in the repo
           image: zeehasham27/coding_challenge:latest
           name: swisscom-coding-challenge
           imagePullPolicy : IfNotPresent
