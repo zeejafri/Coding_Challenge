@@ -2,6 +2,7 @@
 - Shell Script assesment-script.sh
 - Kubernetes Deployment file
 - Dockerfile
+- Docker Image image-zeehasham27-coding_challenge.tar.gz
 
 # Shell Script assesment-script.sh
 The shell scripts gets a token using a GET request for authentication and extract out 2 parameters from URL. The script expects user to pass 2 arguments, first one authentication URL and second one parameter URL and prints "HELLO WORLD, PARAM1-PARAM2". If user pass -k8 along with the other 2 mentioned arguments, it will print a kubernetes deployment file. Use single argument '-h' to print its help section.
@@ -20,6 +21,15 @@ The dockerfile packages this shell script and pushes an image to the public dock
 
 `docker build -f dockerfile . -t image:latest`
 `docker push image:latest`
+
+# Docker Image image-zeehasham27-coding_challenge.tar.gz
+A docker image is also uploaded to this repo which is being used to test the application. This image was build using the same dockerfile provided in the repo. This is 
+added just to save users time in build a new image. To load the image use the command below after cloning the repo:
+
+`docker load -i image-zeehasham27-coding_challenge.tar.gz`
+
+Once loaded check available images using command:
+`docker images`
 
 # Kubernetes Deployment File:
 A Kubernetes Deployment file is packaged along with this repository. It can also be created on the runtime using the -k8 argument along with URL arguments to the script. Once the K8 Deployment file is printed to the std out, user would have to update the command section by adding the enviornment variables. 
