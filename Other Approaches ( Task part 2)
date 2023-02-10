@@ -1,0 +1,42 @@
+Using python or GoLang wrapper:
+Another way of deploying app through a script based approach can be done using python. We can create a python script that can get the values and authentication token 
+and run the docker build command at the end of script to generate an image. The advantage of using it would be more dynamically coded script with function return
+types and faster script execution as compared to bash. However we would have to maintain or include several number of libraries and could face some code issues due to 
+python versions. Same is with Golang. 
+
+Jenkins(CI/CD):
+Another approach to perform this deployment could be using Jenkins declarative pipeline. The pipeline would have essentially build the dockerfile, push the image to 
+registry and deployed the application over to K8. However, it may add complexity to the infrastructure and require additional resources. One had to deploy Jenkins first
+to achieve this.
+
+Docker Compose:
+We could also leverage the docker compose to deploy this application. This could have saved us time for depoying K8s lab if not already available. 
+With simple docker compose yaml file we could have quickly deployed this application at any port of our choice. The down side of this approach was the scaliblity,
+we could not scale our apps in terms of replica sets etc.
+
+Kubernetes with Config maps:
+Another approach that I can think of is using config maps. If we used config maps we would not have to package the shell script inside a image and custom build the image.
+We could have pulled any linux image from dockerhub, mount the shell script as config map in the container and run the script using command section. This appraoch could
+have saved us time in build a custom image. Lets suppose if this is a production app, maintaining its custom image would be nothing more than a overhead. 
+
+Ansible:
+Another way that I can think of is using ansible playbooks and roles. This could be another way but may be complex than what we have done now. With leveraging all of 
+modules ansible offers, it brings complexity of usage. So I think this is not the best way to go about this.
+
+Using Managed services over the Cloud:
+Another alternative to deploying the application is using a managed Kubernetes service, such as Amazon Elastic Kubernetes Service (EKS), 
+Google Kubernetes Engine (GKE), or Azure Kubernetes Service (AKS). The managed service takes care of the infrastructure management and provides a simplified experience 
+for deploying and scaling applications. This approach could  save us time in infrastructure and labs provisioning. A fully functional cluster would have been available
+which we could use to build image and deploy over to Kubernetes.
+
+Current appraoch:
+The current approach is a quicker deployment strategy using a bash wrapper which is then copied over to the docker image to run a container which makes it simpler to 
+execute. The main downside of this approach is that it requires a significant amount of manual effort and technical expertise to set up.The bash script requires a 
+certain level of understanding of the API, and the process of retrieving the token, as well as the syntax and functionality of the API, which is the case with anyother
+language.Additionally, generating a plain Kubernetes deployment YAML file requires a reasonable understanding of Kubernetes, and how to create and configure a deployment, 
+service, and replica set etc. If there are changes to the API or the parameters, the bash script will need to be updated, which could be a 
+time-consuming process, especially if it is not properly documented. 
+
+
+At this point any apprach that we select would have their pros and cons, the choice of best way forward will be influenced by so many factors including whats already 
+available to leverage, level of expertise to execute things etc.
