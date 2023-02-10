@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: swisscom-coding-challenge
+  name: swisscom-coding-challenge
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: swisscom-coding-challenge
+  template:
+    metadata:
+      labels:
+        app: swisscom-coding-challenge
+    spec:
+      containers:
+        - env:
+            - name: AUTH_URL
+              value: "https://151dd0e4-bd8b-453b-a01c-924e75053a8b.mock.pstmn.io/auth"
+            - name: PARAMS_URL
+              value: "https://151dd0e4-bd8b-453b-a01c-924e75053a8b.mock.pstmn.io/parameters"
+          command: ["/bin/sh", "-c", "./assesment-script.sh $AUTH_URL $PARAMS_URL && sleep 3000000"]
+          image: zeehasham27/coding_challenge:latest
+          name: swisscom-coding-challenge
+          imagePullPolicy : IfNotPresent
+          ports:
+            - containerPort: 8080
