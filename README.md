@@ -6,8 +6,20 @@
 # Shell Script assesment-script.sh
 The shell scripts gets a token using a GET request for authentication and extract out 2 parameters from URL. The script expects user to pass 2 arguments, first one authentication URL and second one parameter URL and prints "HELLO WORLD, PARAM1-PARAM2". If user pass -k8 along with the other 2 mentioned arguments, it will print a kubernetes deployment file. Use single argument '-h' to print its help section.
 
+Output for `bash assesment-script.sh https://151dd0e4-bd8b-453b-a01c-924e75053a8b.mock.pstmn.io/auth https://151dd0e4-bd8b-453b-a01c-924e75053a8b.mock.pstmn.io/parameters -k8`
+![image](https://user-images.githubusercontent.com/48657324/218092947-bd6a0ad8-b0dc-4c60-928f-73551c6689ea.png)
+
+Output for `bash assesment-script.sh https://151dd0e4-bd8b-453b-a01c-924e75053a8b.mock.pstmn.io/auth https://151dd0e4-bd8b-453b-a01c-924e75053a8b.mock.pstmn.io/parameters`
+![image](https://user-images.githubusercontent.com/48657324/218093205-74fc8c9a-d2f6-4c41-99db-9473c9fde88c.png)
+
+Printing help section
+![image](https://user-images.githubusercontent.com/48657324/218093296-5a3784a6-78f2-41ec-a2e1-ddbd75b02fed.png)
+
 # Dockerfile
 The dockerfile packages this shell script and pushes an image to the public docker registry. The working directory of pushed image would be /app where shell script will be placed.
+
+`docker build -f dockerfile . -t image:latest`
+`docker push image:latest`
 
 # Kubernetes Deployment File:
 A Kubernetes Deployment file is packaged along with this repository. It can also be created on the runtime using the -k8 argument along with URL arguments to the script. Once the deployment is spin up user would be able to see the pod logs with output "HELLO WORLD, swisscom2023-smingate77"
